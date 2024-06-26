@@ -12,9 +12,15 @@
             "enforceBuildableLibDependency": true,
             "allow": [],
             "depConstraints": [
+              // projects tagged with "frontend" can't import from "@nestjs/common"
               {
-                "sourceTag": "*",
-                "onlyDependOnLibsWithTags": ["*"]
+                "sourceTag": "frontend",
+                "bannedExternalImports": ["@nestjs/common"]
+              },
+              // projects tagged with "backend" can't import from "@angular/core"
+              {
+                "sourceTag": "backend",
+                "bannedExternalImports": ["@angular/core"]
               }
             ]
           }
