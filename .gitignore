@@ -42,3 +42,12 @@ Thumbs.db
 .nx/workspace-data
 
 .angular
+
+# Backend .env ignore
+/api/.env
+
+# Frontend .env ignore
+/app/.env
+
+# Shared lib .env ignore
+/shared-lib/.env
