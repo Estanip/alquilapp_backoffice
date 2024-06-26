@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "all:start:dev": "nx run-many --parallel --target=serve --projects=api,app",
     "api:start:dev": "npx nx serve api",
     "app:start:dev": "npx nx serve app",
+    "all:build": "nx run-many --parallel --target=build --projects=api,app",
     "api:build": "npx nx build api",
     "app:build": "npx nx build app",
     "api:eslint": "npx nx lint api",
