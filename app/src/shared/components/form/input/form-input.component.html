@@ -1,0 +1,14 @@
+<div [formGroup]="formGroup">
+  <mat-form-field [appearance]="formAppearance" [class]="class">
+    <mat-label>{{ labelText }}</mat-label>
+    <input
+      matInput
+      [formControlName]="controlName"
+      [name]="name"
+      [placeholder]="placeholderText"
+      [required]="isRequired"
+      [type]="type"
+    />
+    <mat-error>{{ formGroup.controls[controlName].errors && 'Complete correctamente el campo' }}</mat-error>
+  </mat-form-field>
+</div>
