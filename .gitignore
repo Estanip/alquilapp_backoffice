@@ -43,6 +43,8 @@ Thumbs.db
 
 .angular
 
+.husky
+
 # Backend .env ignore
 /api/.env
 
