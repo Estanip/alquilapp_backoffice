@@ -15,7 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@alquilapp-backoffice/shared-lib": ["shared-lib/src/index.ts"]
+      "@shared-lib/*": ["shared-lib/src/*"],
+      "@api/shared/*": ["api/shared/*"],
+      "@api/*": ["api/src/*"],
+      "@app/*": ["app/src/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]
