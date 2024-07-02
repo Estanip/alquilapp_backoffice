@@ -22,7 +22,7 @@
             "input": "app/public"
           }
         ],
-        "styles": ["app/src/styles.scss"],
+        "styles": ["@angular/material/prebuilt-themes/magenta-violet.css", "app/src/styles.scss"],
         "scripts": []
       },
       "configurations": {

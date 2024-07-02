@@ -1,0 +1,37 @@
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="login()">
+      <app-form-input
+        [formGroup]="form"
+        [isRequired]="true"
+        class="login"
+        controlName="email"
+        labelText="Email"
+        name="email"
+        placeholderText="Email"
+        type="email"
+      ></app-form-input>
+
+      <app-form-input
+        [formGroup]="form"
+        [isRequired]="true"
+        class="login"
+        controlName="password"
+        labelText="Password"
+        name="password"
+        placeholderText="Password"
+        type="password"
+      ></app-form-input>
+
+      <div class="btn-container">
+        <app-form-button
+          class="sm"
+          color="primary"
+          text="Ingresar"
+          type="submit"
+          [disabled]="_validateFormStatus()"
+        ></app-form-button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -15,6 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@app/core/*": ["app/src/core/*"],
+      "@app/modules/*": ["app/src/app/modules/*"],
+      "@app/pages/*": ["app/src/app/pages/*"],
+      "@app/shared/*": ["app/src/shared/*"]
       "@shared-lib/*": ["shared-lib/src/*"],
       "@api/shared/*": ["api/shared/*"],
       "@api/*": ["api/src/*"],
