@@ -19,6 +19,10 @@
       "@app/modules/*": ["app/src/app/modules/*"],
       "@app/pages/*": ["app/src/app/pages/*"],
       "@app/shared/*": ["app/src/shared/*"]
+      "@shared-lib/*": ["shared-lib/src/*"],
+      "@api/shared/*": ["api/shared/*"],
+      "@api/*": ["api/src/*"],
+      "@app/*": ["app/src/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]

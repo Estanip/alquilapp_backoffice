@@ -53,3 +53,6 @@ Thumbs.db
 
 # Shared lib .env ignore
 /shared-lib/.env
+
+# Docker
+docker-compose*.*.yml
