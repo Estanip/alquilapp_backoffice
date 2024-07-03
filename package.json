@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "prepare": "husky",
-    "format": "prettier --write \"**/*.ts\""
+    "format": "prettier --write \"**/*.ts\"",
     "start:dev:all": "npx nx run-many --parallel --target=serve --projects=api,app --watch",
     "start:dev:api": "npx nx serve api --watch",
     "start:dev:app": "npx nx serve app",
