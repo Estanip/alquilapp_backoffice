@@ -26,6 +26,13 @@
       <div class="btn-container">
         <app-form-button
           class="sm"
+          color="secondary"
+          text="No tengo cuenta"
+          type="button"
+          [redirectRoute]="registerPath"
+        ></app-form-button>
+        <app-form-button
+          class="sm"
           color="primary"
           text="Ingresar"
           type="submit"

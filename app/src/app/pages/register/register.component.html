@@ -1,0 +1,77 @@
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="register()">
+      <app-form-input
+        [formGroup]="form"
+        [isRequired]="true"
+        class="register"
+        controlName="name"
+        labelText="Name"
+        name="name"
+        placeholderText="Nombre"
+        type="text"
+      ></app-form-input>
+
+      <app-form-input
+        [formGroup]="form"
+        [isRequired]="true"
+        class="register"
+        controlName="surname"
+        labelText="Surname"
+        name="surname"
+        placeholderText="Apellido"
+        type="text"
+      ></app-form-input>
+
+      <app-form-input
+        [formGroup]="form"
+        [isRequired]="true"
+        class="register"
+        controlName="email"
+        labelText="Email"
+        name="email"
+        placeholderText="Email"
+        type="email"
+      ></app-form-input>
+
+      <app-form-input
+        [formGroup]="form"
+        [isRequired]="true"
+        class="register"
+        controlName="role"
+        labelText="Role: Admin / Usuario"
+        name="role"
+        placeholderText="Rol: Admin / Usuario"
+        type="text"
+      ></app-form-input>
+
+      <app-form-input
+        [formGroup]="form"
+        [isRequired]="true"
+        class="register"
+        controlName="password"
+        labelText="Password"
+        name="password"
+        placeholderText="Password"
+        type="password"
+      ></app-form-input>
+
+      <div class="btn-container">
+        <app-form-button
+          class="sm"
+          color="secondary"
+          text="Ya tengo cuenta"
+          type="button"
+          [redirectRoute]="loginPath"
+        ></app-form-button>
+        <app-form-button
+          class="sm"
+          color="primary"
+          text="Registrar"
+          type="submit"
+          [disabled]="_validateFormStatus()"
+        ></app-form-button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
