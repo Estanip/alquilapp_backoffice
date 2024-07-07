@@ -1,6 +1,6 @@
 {
   "root": true,
-  "ignorePatterns": ["**/*"],
+  "ignorePatterns": ["**/*", "**/node_modules/**"],
   "plugins": ["@nx"],
   "overrides": [
     {
@@ -13,15 +13,17 @@
             "enforceBuildableLibDependency": true,
             "allow": [],
             "depConstraints": [
-              // projects tagged with "frontend" can't import from "@nestjs/common"
+              // frontend project imports restrictions
               {
-                "sourceTag": "frontend",
-                "bannedExternalImports": ["@nestjs/common"]
+                "sourceTag": "scope:frontend",
+                "bannedExternalImports": ["@nestjs/common", "scope:backend"],
+                "onlyDependOnLibsWithTags": ["type:lib"]
               },
-              // projects tagged with "backend" can't import from "@angular/core"
+              // backend project imports restrictions
               {
-                "sourceTag": "backend",
-                "bannedExternalImports": ["@angular/core"]
+                "sourceTag": "scope:backend",
+                "bannedExternalImports": ["@angular/core", "scope:frontend"],
+                "onlyDependOnLibsWithTags": ["type:lib"]
               }
             ]
           }
