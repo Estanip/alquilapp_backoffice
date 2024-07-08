@@ -1,14 +1,22 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
+import { Roles } from '@app/core/constants/roles';
 import { RegExp } from '@app/core/constants/regexp';
 import { RoutesPaths } from '@app/core/constants/routes';
 import { FormButtonComponent } from '@app/shared/components/form/button/form-button.component';
 import { FormInputComponent } from '@app/shared/components/form/input/form-input.component';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-register',
   standalone: true,
   imports: [
     CommonModule,
@@ -17,35 +25,42 @@ import { FormInputComponent } from '@app/shared/components/form/input/form-input
     MatCardModule,
     ReactiveFormsModule,
   ],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
+  templateUrl: './register.component.html',
+  styleUrl: './register.component.scss',
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   form!: FormGroup;
-  registerPath: string = RoutesPaths.AUTH.REGISTER;
+  loginPath: string = RoutesPaths.AUTH.LOGIN;
 
   constructor(private readonly _formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     this._setForm();
   }
-
-  login(): void {
-    return;
+  register(): void {
+    console.log('Registrado!');
   }
 
   private _setForm(): void {
     this.form = this._formBuilder.group({
+      name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]],
+      surname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]],
+      //role: ['', [Validators.required, roleValidator]],
       email: ['', [Validators.required, Validators.pattern(RegExp.EMAIL)]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]],
     });
   }
-  /* 
-  private _resetForm(): void {
-    this.form.reset();
-  }
- */
+
   _validateFormStatus(): boolean {
     return this.form.status !== 'VALID';
   }
+}
+
+function roleValidator(control: AbstractControl): ValidationErrors | null {
+  const enteredRole = control.value.toLowerCase();
+
+  if (!Object.values(Roles).includes(enteredRole)) {
+    return { roleInvalid: true };
+  }
+  return null;
 }
