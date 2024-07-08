@@ -2,24 +2,29 @@
 
 /api-e2e
 
-.dist
+**/.aws
+**/dist
 
-.editorconfig
+**/.editorconfig
+
+**/.env
 
 #.eslintignore
 #.eslintrc.json
 
-.github
-.git
-.gitignore
+**/.github
+**/.git
+**/.gitignore
 
-.husky
+**/.husky
 
 jest*.*
 
-/node_modules
+**/node_modules/
 
-.prettierignore
-.prettierrc
+**/.prettierignore
+**/.prettierrc
 
-.vscode
+**/README.md
+
+**/.vscode
