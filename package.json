@@ -3,17 +3,21 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "prepare": "husky",
-    "format": "prettier --write \"**/*.ts\"",
-    "start:dev:all": "npx nx run-many --parallel --target=serve --projects=api,app --watch",
-    "start:dev:api": "npx nx serve api --watch",
-    "start:dev:app": "npx nx serve app",
-    "start:prod:api": "node dist/api/main.js",
     "build:all": "npx nx run-many --target=build --all --configuration=production",
     "build:api": "npx nx build api",
     "build:app": "npx nx build app",
+    "docker:build:api:dev": "docker build -f api/Dockerfile -t alquilapp_bo_api_dev .",
+    "docker:build:api:prod": "docker build -f api/Dockerfile -t alquilapp_bo_api_prod .",
+    "docker:compose:api:dev": "docker compose -f docker-compose.dev.yml up -d --build",
+    "docker:compose:api:prod": "docker compose -f docker-compose.prod.yml up -d --build",
     "eslint:api": "npx nx lint api",
-    "eslint:app": "npx nx lint app"
+    "eslint:app": "npx nx lint app",
+    "format": "prettier --write \"**/*.ts\"",
+    "prepare": "husky",
+    "start:dev:all": "npx nx run-many --parallel --target=serve --projects=api,app --watch",
+    "start:dev:api": "npx nx serve api --watch",
+    "start:dev:app": "npx nx serve app",
+    "start:prod:api": "node dist/api/main.js"
   },
   "private": true,
   "devDependencies": {
