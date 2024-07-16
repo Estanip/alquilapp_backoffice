@@ -20,8 +20,7 @@ jobs:
           cp -r api/package.json deploy/
           cp -r nx.json deploy/
           cp -r tsconfig.base.json deploy/
-          cp -r .eslintrc.json deploy/
-
+          
       - name: Copy deploy folder to EC2
         env:
           PRIVATE_KEY: ${{ secrets.AWS_EC2_DEV_SECRET_KEY }}
