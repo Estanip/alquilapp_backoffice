@@ -20,7 +20,7 @@ jobs:
           cp -r api/package.json deploy/
           cp -r nx.json deploy/
           cp -r tsconfig.base.json deploy/
-          
+
       - name: Copy deploy folder to EC2
         env:
           PRIVATE_KEY: ${{ secrets.AWS_EC2_DEV_SECRET_KEY }}
@@ -38,7 +38,6 @@ jobs:
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
-
               cd /home/ubuntu/app &&
               docker compose -f docker-compose.yml up -d --build
               '
