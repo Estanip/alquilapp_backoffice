@@ -16,7 +16,7 @@ jobs:
       - name: Create deployment package
         run: |
           mkdir -p deploy
-          rsync -av --exclude='Dockerfile' api/ deploy/
+          rsync -av --exclude='Dockerfile' api deploy
           cp -r api/package.json deploy/
           cp -r nx.json deploy/
           cp -r tsconfig.base.json deploy/
