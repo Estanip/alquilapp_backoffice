@@ -10,13 +10,7 @@ import { FormInputComponent } from '@app/shared/components/form/input/form-input
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormInputComponent,
-    FormButtonComponent,
-    MatCardModule,
-    ReactiveFormsModule,
-  ],
+  imports: [CommonModule, FormInputComponent, FormButtonComponent, MatCardModule, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
