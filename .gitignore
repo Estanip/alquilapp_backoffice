@@ -51,8 +51,8 @@ Thumbs.db
 # Frontend .env ignore
 /app/.env
 
-# Shared lib .env ignore
-/shared-lib/.env
-
 # Docker
 docker-compose*.*.yml
+
+# NGINX
+nginx.conf
