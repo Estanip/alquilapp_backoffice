@@ -1,15 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-  ValidationErrors,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
-import { Roles } from '@app/core/constants/roles';
 import { RegExp } from '@app/core/constants/regexp';
 import { RoutesPaths } from '@app/core/constants/routes';
 import { FormButtonComponent } from '@app/shared/components/form/button/form-button.component';
@@ -18,13 +10,7 @@ import { FormInputComponent } from '@app/shared/components/form/input/form-input
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormInputComponent,
-    FormButtonComponent,
-    MatCardModule,
-    ReactiveFormsModule,
-  ],
+  imports: [CommonModule, FormInputComponent, FormButtonComponent, MatCardModule, ReactiveFormsModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
@@ -41,6 +27,15 @@ export class RegisterComponent implements OnInit {
     console.log('Registrado!');
   }
 
+  /*   roleValidator(control: AbstractControl): ValidationErrors | null {
+    const enteredRole = control.value.toLowerCase();
+
+    if (!Object.values(Roles).includes(enteredRole)) {
+      return { roleInvalid: true };
+    }
+    return null;
+  }
+ */
   private _setForm(): void {
     this.form = this._formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]],
@@ -54,13 +49,4 @@ export class RegisterComponent implements OnInit {
   _validateFormStatus(): boolean {
     return this.form.status !== 'VALID';
   }
-}
-
-function roleValidator(control: AbstractControl): ValidationErrors | null {
-  const enteredRole = control.value.toLowerCase();
-
-  if (!Object.values(Roles).includes(enteredRole)) {
-    return { roleInvalid: true };
-  }
-  return null;
 }
