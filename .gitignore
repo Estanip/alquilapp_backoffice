@@ -45,6 +45,9 @@ Thumbs.db
 
 .husky
 
+# Git
+.github
+
 # Backend .env ignore
 /api/.env
 
