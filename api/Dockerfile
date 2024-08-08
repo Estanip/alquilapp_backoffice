@@ -22,8 +22,10 @@ CMD ["npx", "nx", "serve", "api", "--watch"]
 FROM node:20.15.0-alpine AS production
 WORKDIR /app
 COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/dist/api ./build
+COPY --from=builder /app/dist/api ./dist
 COPY --from=builder /app/package.json ./
 RUN npm prune --production
+RUN addgroup -S docker && adduser -S docker -G docker
+USER docker
 EXPOSE 3006
-CMD ["node", "build/main.js"]
+CMD ["node", "dist/main.js"]
