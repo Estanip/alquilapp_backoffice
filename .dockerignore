@@ -1,7 +1,5 @@
 .angular
 
-/api-e2e
-
 **/.aws
 **/dist
 
@@ -19,6 +17,8 @@
 **/.husky
 
 jest*.*
+
+nginx.conf
 
 **/node_modules/
 
