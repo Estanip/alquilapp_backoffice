@@ -1,0 +1,33 @@
+<div [formGroup]="form">
+  <div [ngSwitch]="builderValue.controlType">
+    <app-form-input
+      *ngSwitchCase="'textbox'"
+      [controlName]="builderValue.key"
+      [formGroup]="form"
+      [id]="builderValue.key"
+      [isRequired]="true"
+      [labelText]="builderValue.label"
+      [placeholderText]="builderValue.key"
+      [type]="builderValue.type"
+    ></app-form-input>
+
+    <app-form-select
+      *ngSwitchCase="'dropdown'"
+      [controlName]="builderValue.key"
+      [options]="builderValue.options"
+      [formGroup]="form"
+      [id]="builderValue.key"
+      [isMultiple]="builderValue.isMultiple"
+      [labelText]="builderValue.label"
+    ></app-form-select>
+
+    <app-form-checkbox
+      *ngSwitchCase="'radiocheckbox'"
+      [controlName]="builderValue.key"
+      [options]="builderValue.options"
+      [formGroup]="form"
+      [id]="builderValue.key"
+      [labelText]="builderValue.label"
+    ></app-form-checkbox>
+  </div>
+</div>
