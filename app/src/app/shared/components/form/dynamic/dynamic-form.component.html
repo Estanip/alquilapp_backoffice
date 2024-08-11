@@ -1,0 +1,25 @@
+<form [formGroup]="form">
+  @for (value of builderValues; track value) { @if (value.key !== '_id') {
+  <app-form-builder-value [builderValue]="value" [form]="form"></app-form-builder-value>
+  } }
+
+  <div class="btn-container">
+    <app-form-button
+      class="auto"
+      color="warn"
+      text="Regresar"
+      [clickHandler]="closeButtonOnClick"
+      clickHandlerMethod="eventEmitter"
+    ></app-form-button>
+    <app-form-button
+      class="auto"
+      color="primary"
+      text="Confirmar"
+      type="submit"
+      [clickHandler]="confirmButtonOnClick"
+      clickHandlerMethod="eventEmitter"
+      [clickHandlerParameter]="form"
+      [disabled]="!form.valid"
+    ></app-form-button>
+  </div>
+</form>
