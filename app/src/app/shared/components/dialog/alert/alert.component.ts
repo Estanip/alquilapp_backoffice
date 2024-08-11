@@ -10,7 +10,7 @@ import {
   MatDialogTitle,
   MatDialogRef,
 } from '@angular/material/dialog';
-import { IDialogAlertData } from '..';
+import { IDialogAlertData } from '../interfaces';
 
 @Component({
   selector: 'app-alert',
