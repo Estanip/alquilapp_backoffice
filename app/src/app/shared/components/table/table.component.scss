@@ -1,0 +1,50 @@
+table {
+  width: 100%;
+
+  mat-icon {
+    cursor: pointer;
+  }
+
+  // Icon color classes
+  .checked {
+    color: green;
+  }
+
+  .edit {
+    color: midnightblue;
+  }
+
+  .delete {
+    color: firebrick;
+  }
+}
+
+// Classes
+.options-container {
+  width: 100%;
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 70%;
+  }
+
+  .add-container {
+    display: flex;
+    justify-content: center;
+    width: 15%;
+
+    button {
+      display: flex;
+      align-items: center;
+
+      mat-icon {
+        font-size: 18px;
+        align-content: center;
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+@if(loading) {
+<app-spinner></app-spinner>
+} @else {
+<div class="options-container">
+  @if(allowFilter) {
+  <mat-form-field appearance="outline">
+    <mat-label>Buscar</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Filtrar..." #input />
+  </mat-form-field>
+  } @if(allowAdd) {
+  <div class="add-container">
+    <button mat-flat-button color="primary" (click)="addItem.emit()">
+      <mat-icon>add</mat-icon>
+      <span>Agregar</span>
+    </button>
+  </div>
+  }
+</div>
+<table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+  @for (col of displayedColumns; track col) {
+  <ng-container [matColumnDef]="col">
+    @if(col !== 'Edit' && col !== 'Delete'){
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ col }}</th>
+    } @else {
+    <th mat-header-cell *matHeaderCellDef>{{ col }}</th>
+    } @if(col === 'Edit') {
+    <td mat-cell *matCellDef="let element">
+      <mat-icon class="edit" (click)="getItemId.emit(element._id)">edit</mat-icon>
+    </td>
+    } @if(col === 'Delete') {
+    <td mat-cell *matCellDef="let element">
+      <mat-icon class="delete" (click)="getItemId.emit(element._id)">delete</mat-icon>
+    </td>
+    } @if(col === 'Enabled') {
+    <td mat-cell *matCellDef="let element">
+      <mat-icon [ngClass]="{ checked: element[col] }">check_circle_outline</mat-icon>
+    </td>
+    }@else {
+    <td mat-cell *matCellDef="let element">
+      {{ element[col] }}
+    </td>
+    }
+  </ng-container>
+  }
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="4">No se han encontrado resultados</td>
+  </tr>
+</table>
+<mat-paginator
+  #paginator
+  [length]="paginatorTotalItems"
+  [pageSize]="paginatorPageSize"
+  [pageIndex]="paginatorPageIndex"
+  [pageSizeOptions]="paginatorPageSizeOptions"
+  (page)="paginatorPageEvent($event)"
+  [showFirstLastButtons]="paginatorShowFirstLastButtons"
+></mat-paginator>
+}
