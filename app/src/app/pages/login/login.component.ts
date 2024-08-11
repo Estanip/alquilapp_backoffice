@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
-import { RegExp } from '@app/core/constants/regexp';
-import { RoutesPaths } from '@app/core/constants/routes';
-import { FormButtonComponent } from '@app/shared/components/form/button/form-button.component';
-import { FormInputComponent } from '@app/shared/components/form/input/form-input.component';
+import { REGEXPS } from '@app/app/core/constants/regexp';
+import { RoutesPaths } from '@app/app/core/constants/routes';
+import { AuthService } from '@app/app/modules/auth/services';
+import { FormButtonComponent } from '@app/app/shared/components/form/button/form-button.component';
+import { FormInputComponent } from '@app/app/shared/components/form/input/form-input.component';
 
 @Component({
   selector: 'app-login',
@@ -18,27 +19,23 @@ export class LoginComponent implements OnInit {
   form!: FormGroup;
   registerPath: string = RoutesPaths.AUTH.REGISTER;
 
-  constructor(private readonly _formBuilder: FormBuilder) {}
+  constructor(private readonly _formBuilder: FormBuilder, private readonly _authService: AuthService) {}
 
   ngOnInit(): void {
     this._setForm();
   }
 
   login(): void {
-    return;
+    this._authService.login(this.form.value.email, this.form.value.password);
   }
 
   private _setForm(): void {
     this.form = this._formBuilder.group({
-      email: ['', [Validators.required, Validators.pattern(RegExp.EMAIL)]],
+      email: ['', [Validators.required, Validators.pattern(REGEXPS.EMAIL)]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]],
     });
   }
-  /* 
-  private _resetForm(): void {
-    this.form.reset();
-  }
- */
+
   _validateFormStatus(): boolean {
     return this.form.status !== 'VALID';
   }
