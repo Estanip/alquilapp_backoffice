@@ -1,0 +1,11 @@
+<app-menu></app-menu>
+@if (!tableHidden) {
+<app-table
+  [data]="tableData"
+  [columns]="tableColumns"
+  [deleteable]="false"
+  [editable]="true"
+  (getItemId)="editItem($event)"
+  (addItem)="createItem()"
+></app-table>
+}
